@@ -20,7 +20,8 @@ public class CamToRocket : MonoBehaviour
     {
 
 
-        transform.position = Vector3.Slerp(transform.position, rocketman.transform.position, 0.15f);
+        transform.position = new Vector3(posXSet(), posYSet(), posZSet());
+          
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rocketman.transform.rotation, 0.05f);
 
@@ -30,4 +31,21 @@ public class CamToRocket : MonoBehaviour
 
 
     }
+
+
+    private float posXSet()
+    {
+        return Mathf.Lerp(transform.position.x, rocketman.transform.position.x, 0.15f);
+    }
+    private float posYSet()
+    {
+        return Mathf.Lerp(transform.position.y, rocketman.transform.position.y, 0.35f);
+    }
+
+    private float posZSet()
+    {
+        return Mathf.Lerp(transform.position.z, rocketman.transform.position.z, 0.55f);
+    }
+
+
 }

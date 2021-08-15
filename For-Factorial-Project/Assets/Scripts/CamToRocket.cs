@@ -44,7 +44,7 @@ public class CamToRocket : MonoBehaviour
 
     private float posZSet()
     {
-        return Mathf.Lerp(transform.position.z, rocketman.transform.position.z, 0.55f);
+        return Mathf.Lerp(transform.position.z, rocketman.transform.position.z, 0.15f);
     }
 
 

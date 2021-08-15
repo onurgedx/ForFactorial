@@ -9,6 +9,19 @@ public class GravityOn : MonoBehaviour
 
     public float jumpPower = 1000f;
 
+    
+
+
+    private void FixedUpdate()
+    {
+
+        
+    }
+
+
+    
+
+
     public void gravitySetOne()
     {
 
@@ -32,12 +45,18 @@ public class GravityOn : MonoBehaviour
         forceToForward(x);
     }
 
-    private void forceToForward(float x)
+    public void forceToForward(float x)
 
     {
-        
+        //rg.MoveRotation()
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + x, transform.rotation.eulerAngles.z);
+        GoForward();
+        //rg.AddForce(new Vector3(x * 2, 0, 1f)*600, ForceMode.Acceleration);
+    }
 
-        rg.AddForce(new Vector3(x * 2, 0, 1f)*600, ForceMode.Acceleration);
+    public void GoForward()
+    {
+        rg.AddForce(transform.TransformVector(new Vector3(0, 0, 1000*Time.deltaTime)));
     }
 
     
@@ -45,12 +64,12 @@ public class GravityOn : MonoBehaviour
 
     private void SetDrag10()
     {
-        rg.drag = 10f;
+        rg.drag = 0.41f;
     }
     
     public void SetDrag0()
     {
-        rg.drag = 0f;
+        rg.drag = 0.41f;
 
     
    }
@@ -79,14 +98,21 @@ public class GravityOn : MonoBehaviour
     {
         if(collision.gameObject.tag =="silindirPink")
         {
-            Debug.Log("silindir");
+            if(collision.collider.bounds.max.y<=collision.contacts[0].point[1])
+            {Debug.Log("silindir");
             OnceXUp();
+
+            }  
+            
         }
 
         else if(collision.gameObject.tag=="prizmaBlue")
         {
-            Debug.Log("prizma");
-            TwoXUp();
+            if (collision.collider.bounds.max.y   <= collision.contacts[0].point[1])
+            {
+                Debug.Log("prizma");
+                TwoXUp();
+            }
 
 
         }

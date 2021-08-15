@@ -54,13 +54,14 @@ public class MotionRocket : MonoBehaviour
         animator.SetFloat("time", timeOfAni(animator.GetFloat("time") + Time.deltaTime*5));
         
         gravityRocket.dragAndForceForward(0.5f-animator2.GetFloat("direction")); //surtunmeyi arttiriyor
-
+        gravityRocket.GoForward();
     }
 
     public void NoTouching()
     {
         gravityRocket.SetDrag0();
-        
+        gravityRocket.GoForward();
+
           animator2.SetFloat("direction", Mathf.Lerp(animator2.GetFloat("direction"), 0.5f, 0.5f));
 
       animator.SetFloat("time", timeOfAni(animator.GetFloat("time") - Time.deltaTime*4));

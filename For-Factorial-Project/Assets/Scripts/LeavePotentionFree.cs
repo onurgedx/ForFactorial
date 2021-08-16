@@ -58,7 +58,7 @@ public class LeavePotentionFree : MonoBehaviour
         
         
         
-        rocketman.GetComponent<Rigidbody>().useGravity = true;
+        
 
        camMoving();
         

@@ -15,7 +15,7 @@ public class AddForceOnEnable : MonoBehaviour
     {
 
 
-        rocketmanRG.AddForce(0f, power*2000, power*2000);
+        rocketmanRG.velocity = new Vector3(0f, power*400, power*200);
 
         
     }

@@ -9,87 +9,101 @@ public class GravityOn : MonoBehaviour
 
     public float jumpPower = 1000f;
 
-    
+    public GoAlways go;
+    public FallAlways fall;
+    public FallWithGlider fallGlider;
 
+    public turnLeft left;
+    public turnRight right;
+
+    public Jump jump;
 
     private void FixedUpdate()
     {
 
-        
+
+
+
+      
+
+
+    }
+
+
+    
+    public void leftOnline()
+    {
+        left.enabled = true;
+    
+   }
+
+    public void rightOnline()
+    {
+        right.enabled = true;
+    }
+
+    public void rightOffline()
+    {
+        right.enabled = false;
+
+    }
+    public void leftOffline()
+    {
+        left.enabled = false;
+    }
+
+
+    public void RightLeftOffline()
+    {
+        leftOffline();
+        rightOffline();
+
+    }
+
+
+
+
+
+
+
+    public void FallAlways()
+    {
+        fall.enabled = true;
+    }
+
+    public void FallGlider()
+    {
+        fallGlider.enabled = true;
+    }
+
+
+    public void GoAlways()
+    {
+        fall.enabled = true;
+
     }
 
 
     
 
-
-    public void gravitySetOne()
-    {
-
-        rg.useGravity = true;
-
-      
-    }
-
-    public void gravitySetOff()
-    {
-        rg.useGravity = false;
-    }
+    
 
    
 
 
 
-    public void dragAndForceForward(float x)
-    {
-        SetDrag10();
-        forceToForward(x);
-    }
 
-    public void forceToForward(float x)
-
-    {
-        //rg.MoveRotation()
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + x, transform.rotation.eulerAngles.z);
-        GoForward();
-        //rg.AddForce(new Vector3(x * 2, 0, 1f)*600, ForceMode.Acceleration);
-    }
-
-    public void GoForward()
-    {
-        rg.AddForce(transform.TransformVector(new Vector3(0, 0, 1000*Time.deltaTime)));
-    }
-
+ 
     
 
 
-    private void SetDrag10()
+  
+
+    private void MoreUp()
     {
-        rg.drag = 0.41f;
-    }
-    
-    public void SetDrag0()
-    {
-        rg.drag = 0.41f;
-
-    
-   }
-
-
-    private void TwoXUp()
-    {
-        SetDrag0();
-        rg.AddForce(new Vector3(0, 1, 0) *jumpPower*2);
-
+        jump.enabled = true;
     }
 
-
-
-    private void OnceXUp()
-    {
-        SetDrag0();
-        rg.AddForce(new Vector3(0, 1, 0) * jumpPower);
-
-    }
 
 
 
@@ -98,9 +112,11 @@ public class GravityOn : MonoBehaviour
     {
         if(collision.gameObject.tag =="silindirPink")
         {
-            if(collision.collider.bounds.max.y<=collision.contacts[0].point[1])
-            {Debug.Log("silindir");
-            OnceXUp();
+            if(collision.collider.bounds.max.y <= collision.contacts[0].point[1])
+            {
+                MoreUp();
+
+
 
             }  
             
@@ -110,15 +126,15 @@ public class GravityOn : MonoBehaviour
         {
             if (collision.collider.bounds.max.y   <= collision.contacts[0].point[1])
             {
-                Debug.Log("prizma");
-                TwoXUp();
+                MoreUp();
+                MoreUp();
             }
 
 
         }
         else if (collision.gameObject.tag == "plane")
         {
-
+            
 
             Debug.Log("plane");
         }

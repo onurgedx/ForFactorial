@@ -57,7 +57,7 @@ public class CamToRocket : MonoBehaviour
     {
 
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, rocketman.transform.rotation, 0.30f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rocketman.transform.rotation, 0.60f);
 
 
     }
@@ -74,12 +74,12 @@ public class CamToRocket : MonoBehaviour
 
         if(xyzV[0]>0 &&xyzV[1]>0 && xyzV[0]<1 && xyzV[1]<1f )
         {
-            rocketman.transform.localPosition = Vector3.Slerp(rocketman.transform.localPosition, camRefBeginLocal, Time.deltaTime*4);
+            rocketman.transform.localPosition = Vector3.Lerp(rocketman.transform.localPosition, camRefBeginLocal, Time.deltaTime*4);
 
         }
         else
         {
-           rocketman.transform.localPosition = Vector3.Lerp(rocketman.transform.localPosition, rocketman.transform.localPosition- rocketman.transform.forward*6*Mathf.Abs(xyzV[1]),1/(Mathf.Abs(xyzV[1]))) ;
+           rocketman.transform.localPosition = Vector3.Lerp(rocketman.transform.localPosition, rocketman.transform.localPosition- rocketman.transform.forward*2*Mathf.Abs(xyzV[1]),1/(Mathf.Abs(xyzV[1]))) ;
 
         }
 

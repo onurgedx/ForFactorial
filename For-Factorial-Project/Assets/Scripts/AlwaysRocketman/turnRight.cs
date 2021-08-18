@@ -7,12 +7,12 @@ public class turnRight : MonoBehaviour
 
     public Animator animator;
 
+    
 
     private void Update()
     {
         rotateIt();
 
-        Debug.Log(transform.rotation.eulerAngles);
 
     }
 

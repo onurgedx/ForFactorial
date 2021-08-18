@@ -9,6 +9,11 @@ public class beingChild0 : MonoBehaviour
     private void OnEnable()
     {
         transform.SetAsFirstSibling();
+       
         
     }
+
+
+   
+
 }

@@ -19,7 +19,7 @@ public class FallAlways : MonoBehaviour
 
     private void fall()
     {
-        rg.velocity -= transform.TransformDirection(transform.up*Amount*Time.fixedDeltaTime);
+        rg.velocity -= transform.TransformDirection(Vector3.up*Amount*Time.fixedDeltaTime);
 
 
 

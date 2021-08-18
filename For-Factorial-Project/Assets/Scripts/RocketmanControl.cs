@@ -28,6 +28,14 @@ public class RocketmanControl : MonoBehaviour
 
 
     }
+
+    public float get_xDiff()
+    {
+        return controller.GetComponent<Controller>().get_xdiff();
+    }
+
+
+
     private void SlideRight()
     {
         hareket2.SlideRight();
@@ -54,6 +62,8 @@ public class RocketmanControl : MonoBehaviour
     private void touchNameUpdate()
     {
         touchName = controller.transform.GetChild(0).gameObject.name;
+
+
     }
 
 }

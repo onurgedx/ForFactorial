@@ -28,11 +28,19 @@ public class StickControl : MonoBehaviour
         
 
     }
+
+
+    public float get_xDiff()
+    {
+        return controller.GetComponent<Controller>().get_xdiff();
+    }
     private void SlideRight()
     {
         hareket.SlideRight();
 
     }
+
+
 
     private void SlideLeft()
     {

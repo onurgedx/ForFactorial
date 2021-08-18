@@ -14,15 +14,18 @@ public class MotionRocket : MonoBehaviour
 
     public float val = 20f;
 
-   
+    public RocketmanControl RMControl;
 
 
-    private float timeOfAni(float time)
+    private float timeOfAni(float time,float min=0,float max=0.99f)
     {
-        return Mathf.Clamp(time, 0f , 0.99f);
+        return Mathf.Clamp(time, min  , max);
     }
 
-    
+    private float getXDiff()
+    {
+        return timeOfAni(RMControl.get_xDiff(),-0.5f,0.49f);
+    }
 
     private bool AccesForSlide()
     {
@@ -32,8 +35,12 @@ public class MotionRocket : MonoBehaviour
     {
       
         if(AccesForSlide())
-        { 
-         animator2.SetFloat("direction",Mathf.Lerp(animator2.GetFloat("direction"),0,Time.deltaTime*5));
+        {
+            //animator2.GetFloat("direction")
+            //animator2.SetFloat("direction",Mathf.Lerp(0.5f,0, getXDiff()));
+
+            Slide();
+
             gravityRocket.rightOnline();
         }
 
@@ -44,13 +51,22 @@ public class MotionRocket : MonoBehaviour
     {
         if (AccesForSlide())
         {
+            //animator2.GetFloat("direction")
 
+            //animator2.SetFloat("direction", Mathf.Lerp(0.5f, 1, getXDiff()));
 
-            animator2.SetFloat("direction", Mathf.Lerp(animator2.GetFloat("direction"), 1, Time.deltaTime*5));
+            Slide();
 
             gravityRocket.leftOnline();
 
         }
+    }
+
+
+
+    public void Slide()
+    {
+        animator2.SetFloat("direction", 0.5f-getXDiff());
     }
 
     public void NoMoving()
@@ -105,7 +121,7 @@ public class MotionRocket : MonoBehaviour
 
     public void flipflop()
     {
-        fliper.transform.Rotate(fliper.transform.TransformDirection(Vector3.right), 1800*Time.deltaTime);
+        fliper.transform.Rotate(transform.right, 1800*Time.deltaTime);
        
     }
 

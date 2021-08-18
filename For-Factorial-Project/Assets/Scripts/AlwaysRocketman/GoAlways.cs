@@ -20,12 +20,12 @@ public class GoAlways : MonoBehaviour
     {
 
         Vector3 a = transform.TransformVector(Vector3.forward * Amount);
-        Debug.Log(a);
+        
         rg.velocity = new Vector3(a.x, rg.velocity.y, a.z);
         
 
 
-        print(rg.velocity);
+        
     }
 
 }

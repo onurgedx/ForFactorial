@@ -9,6 +9,10 @@ public class Controller : MonoBehaviour
 
     private float[] touches = new float[2]; // single dimentional 2 floats
 
+    public float x_diff;
+    public float x_begin;
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -25,7 +29,7 @@ public class Controller : MonoBehaviour
 
 
         touchProgress();
-
+        
 
     }
 
@@ -136,17 +140,42 @@ public class Controller : MonoBehaviour
     }
 
     
+    public float get_xdiff()
+    {
+        
+        return x_diff;
+     
+    }
+    private void x_diffEnsure()
+    {
+        x_diff = (touches[0] - x_begin)/(Camera.main.scaledPixelWidth);
+            
+
+
+
+       //  Debug.Log(x_diff);
+        //Debug.Log(Camera.main.scaledPixelWidth);
+
+    }
     private void touchUpdate(float fingerPosX)
     {
+        
+
+
         touches[1] = touches[0];
         touches[0] = fingerPosX;
+
+        x_diffEnsure();
+
     }
     private void touchesReset(float fingerPosX)
     {
+
         //dokunma kayitlarini guncelliyor.
         touches[0] = fingerPosX;
         touches[1] = touches[0];
 
+        x_begin = touches[0];
 
     }
 

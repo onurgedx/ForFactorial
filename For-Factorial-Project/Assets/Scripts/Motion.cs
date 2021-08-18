@@ -8,21 +8,34 @@ public class Motion : MonoBehaviour
 
     public LeavePotentionFree lPF;
 
+    public StickControl sControl;
+
     private float timeOfAni(float time)
     {
         return Mathf.Clamp(time, 0f, 1f);
     }
 
+    private float get_xDiff()
+    {
+        return sControl.get_xDiff();
+    }
+
     public void SlideRight()
     {
-        animator.SetFloat("time", timeOfAni(animator.GetFloat("time") - Time.deltaTime));
+        Slide();
 
     }
     
     public void SlideLeft()
     {
-        animator.SetFloat("time", timeOfAni(animator.GetFloat("time") + Time.deltaTime));
+        Slide();
 
+    }
+
+    public void Slide()
+    {
+        animator.SetFloat("time", timeOfAni(animator.GetFloat("time") - get_xDiff()/2f));
+        // animator.SetFloat("time", timeOfAni(2*Mathf.Abs(get_xDiff())));
     }
 
     public void NoMoving()

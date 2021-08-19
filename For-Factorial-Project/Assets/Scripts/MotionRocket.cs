@@ -17,6 +17,10 @@ public class MotionRocket : MonoBehaviour
     public RocketmanControl RMControl;
 
 
+
+    
+
+
     private float timeOfAni(float time,float min=0,float max=0.99f)
     {
         return Mathf.Clamp(time, min  , max);
@@ -29,15 +33,14 @@ public class MotionRocket : MonoBehaviour
 
     private bool AccesForSlide()
     {
-        return animator.GetFloat("time") > 0.9f;
+        return animator.GetFloat("time") >= 0.0f;
     }
     public void SlideRight()
     {
       
         if(AccesForSlide())
         {
-            //animator2.GetFloat("direction")
-            //animator2.SetFloat("direction",Mathf.Lerp(0.5f,0, getXDiff()));
+        
 
             Slide();
 
@@ -51,9 +54,7 @@ public class MotionRocket : MonoBehaviour
     {
         if (AccesForSlide())
         {
-            //animator2.GetFloat("direction")
-
-            //animator2.SetFloat("direction", Mathf.Lerp(0.5f, 1, getXDiff()));
+            
 
             Slide();
 

@@ -63,14 +63,18 @@ public class CamToRocket : MonoBehaviour
     }
 
   
-
+    private void CamRefRotationSet()
+    {
+        rocketman.transform.rotation = Quaternion.Lerp(rocketman.transform.rotation, Quaternion.LookRotation(-rocketman.transform.position + rocket.transform.position), 1);
+       //rocketman.transform.rotation = Quaternion.Euler(Vector3.Lerp(rocketman.transform.rotation.eulerAngles, Quaternion.LookRotation(-rocketman.transform.position + rocket.transform.position,Vector3.forward).eulerAngles, Time.deltaTime));
+    }
 
     private void camBack()
     {
 
         Vector3 xyzV = Camera.main.WorldToViewportPoint(rocket.transform.position);
 
-         CamRefRotationSet();
+         
 
         if(xyzV[0]>0 &&xyzV[1]>0 && xyzV[0]<1 && xyzV[1]<1f )
         {
@@ -79,7 +83,7 @@ public class CamToRocket : MonoBehaviour
         }
         else
         {
-           rocketman.transform.localPosition = Vector3.Lerp(rocketman.transform.localPosition, rocketman.transform.localPosition- rocketman.transform.forward*2*Mathf.Abs(xyzV[1]),1/(Mathf.Abs(xyzV[1]))) ;
+           rocketman.transform.position = Vector3.Lerp(rocketman.transform.position, rocketman.transform.position- rocketman.transform.forward*6,1/(Mathf.Abs(xyzV[1]))) ;
 
         }
 
@@ -90,11 +94,7 @@ public class CamToRocket : MonoBehaviour
 
     }
 
-    private void CamRefRotationSet()
-    {
-        rocketman.transform.rotation = Quaternion.Lerp(rocketman.transform.rotation, Quaternion.LookRotation(-rocketman.transform.position + rocket.transform.position), Time.deltaTime / 2);
-
-    }
+    
 
 
 

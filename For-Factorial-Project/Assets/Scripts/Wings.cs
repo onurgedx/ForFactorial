@@ -24,10 +24,12 @@ public class Wings : MonoBehaviour
 
     private void trailOnOff()
     {
-        if (animator.GetFloat("time") > 0.9f)
+        if (animator.GetFloat("time") > 0.3f)
         {
             trailwing.enabled = true;
         }
-        else { trailwing.enabled = false; }
+        else {
+            trailwing.Clear();
+            trailwing.enabled = false; }
     }
 }

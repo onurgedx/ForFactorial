@@ -7,14 +7,30 @@ public class Jump : MonoBehaviour
     public Rigidbody rg;
 
     public float power=300f;
+
+    public Controller controller;
+
+
     private void OnEnable()
     {
         //VeloUpIncrease();
-
+        
         SekRaki();
 
+        NothingIsEveryThing();
+
         BeOffline();
+    //SendMEssage olayýna bakmayi unutma KENDÝME NOT
+        
     }
+
+
+    private void NothingIsEveryThing()
+    {
+        controller.StopAllCoroutines();
+        controller.StartCoroutine("BreakTime");
+    }
+    
 
 
     private void SekRaki()

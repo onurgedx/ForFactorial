@@ -70,7 +70,7 @@ public class MotionRocket : MonoBehaviour
         animator2.SetFloat("direction", 0.5f-getXDiff());
     }
 
-    public void NoMoving()
+    public void NoMoving() 
     {
 
         LeftRightDecision();
@@ -99,6 +99,12 @@ public class MotionRocket : MonoBehaviour
         
     }
 
+    public void Nothing()
+    {
+        NoTouching();
+
+    }
+
     private void LeftRightDecision()
     {
        // gravityRocket.RightLeftOffline();
@@ -116,6 +122,8 @@ public class MotionRocket : MonoBehaviour
         
 
     }
+
+    
 
 
 

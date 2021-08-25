@@ -12,6 +12,8 @@ public class Controller : MonoBehaviour
     public float x_diff;
     public float x_begin;
 
+    [SerializeField]
+    private Jump jump;
 
     // Start is called before the first frame update
     private void Start()
@@ -27,11 +29,14 @@ public class Controller : MonoBehaviour
 
         setOffAll();
 
-
+       
+            
         touchProgress();
         
 
     }
+
+    
 
 
 
@@ -44,7 +49,37 @@ public class Controller : MonoBehaviour
     }
 
 
+    public IEnumerator BreakTime()
+    {
+
+        
+        Nothing.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Nothing.SetActive(false);
+
+
+    }
+
+    
+
     private void touchProgress()
+    {
+       
+
+        if(!Nothing.activeInHierarchy)
+        {
+            
+            NothingNOT();
+        }
+
+       
+
+        
+
+    }
+
+
+    private void NothingNOT()
     {
         if (AnyTouch())
         {
@@ -59,8 +94,8 @@ public class Controller : MonoBehaviour
             NoTouchingActive();
 
         }
-    }
 
+    }
     
     private void ThereIsTouch()
     {
@@ -86,6 +121,7 @@ public class Controller : MonoBehaviour
 
         }
 
+        
     }
 
     private void afterMove(Touch finger)

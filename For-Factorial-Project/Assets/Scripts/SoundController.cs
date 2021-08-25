@@ -67,6 +67,7 @@ public class SoundController : MonoBehaviour
     }
     private void StopTheStickMusic()
     {
+        AudioSourceStick.Pause();
        
     
     }

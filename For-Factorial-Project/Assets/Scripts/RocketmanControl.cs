@@ -10,7 +10,7 @@ public class RocketmanControl : MonoBehaviour
     [SerializeField]
     private MotionRocket hareket2;
 
-    private string touchName,touchName2;
+    
 
     private string[] touchNames = new string[2];
 
@@ -37,6 +37,10 @@ public class RocketmanControl : MonoBehaviour
 
 
     }
+
+   
+    
+    
     
     private void touchNamesUpdate()
     {
@@ -48,6 +52,7 @@ public class RocketmanControl : MonoBehaviour
 
     }
     
+   
     private void touchNameUpdate()
     {
         touchNames[0] = controller.transform.GetChild(0).gameObject.name;
@@ -78,10 +83,13 @@ public class RocketmanControl : MonoBehaviour
 
     }
     
+    
     public float get_xDiff()
     {
         return controller.GetComponent<Controller>().get_xdiff();
     }
+
+
 
 
 
@@ -106,6 +114,11 @@ public class RocketmanControl : MonoBehaviour
     private void NoMoving()
     {
         hareket2.NoMoving();
+    }
+
+    private void Nothing()
+    {
+        hareket2.Nothing();
     }
 
    

@@ -172,14 +172,7 @@ public class GravityOn : MonoBehaviour
                
                 MoreUp();
 
-               
-
-
-
-
-
-
-
+            
 
             }  
             
@@ -191,16 +184,15 @@ public class GravityOn : MonoBehaviour
             {  
                 MoreUp();
                 MoreUp();
-
-                
-                
-
+                    
+              
             }
 
 
         }
             AddAndBlow(collision.gameObject);
 
+            go.StartCoroutine("PropelInstant");//hiz veriyor 
 
         }
        

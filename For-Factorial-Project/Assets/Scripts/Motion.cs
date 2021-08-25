@@ -34,7 +34,7 @@ public class Motion : MonoBehaviour
 
     public void Slide()
     {
-        animator.SetFloat("time", timeOfAni(animator.GetFloat("time") - get_xDiff()/2f));
+        animator.SetFloat("time", timeOfAni(animator.GetFloat("time") - get_xDiff()));
         // animator.SetFloat("time", timeOfAni(2*Mathf.Abs(get_xDiff())));
     }
 

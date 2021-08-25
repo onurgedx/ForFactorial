@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     [SerializeField]
-    private GameObject SlideLeft, SlideRight, NoTouching, NoMoving;
+    private GameObject SlideLeft, SlideRight, NoTouching, NoMoving , Nothing;
 
     private float[] touches = new float[2]; // single dimentional 2 floats
 
@@ -74,12 +74,12 @@ public class Controller : MonoBehaviour
 
         }
 
-        else if (AnyMove(finger.phase))
+         if (AnyMove(finger.phase))
         {
             afterMove(finger);
 
         }
-        else if(IsTouchStationary(finger.phase))
+        if(IsTouchStationary(finger.phase))
         {
             
             NoMovingActive();
@@ -92,7 +92,7 @@ public class Controller : MonoBehaviour
     {
         touchUpdate(finger.position[0]);// dokunma gecmisini ve simdisini guncelliyor
 
-         
+         NoMovingActive();
 
        if (isMoveToRight())
         {
@@ -101,7 +101,7 @@ public class Controller : MonoBehaviour
         }
         else if (isNoMoveX())
         {
-            NoMovingActive();
+            
         }
         else
         {

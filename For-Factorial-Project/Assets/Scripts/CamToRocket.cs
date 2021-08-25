@@ -57,7 +57,7 @@ public class CamToRocket : MonoBehaviour
     {
 
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, rocketman.transform.rotation, 0.60f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rocketman.transform.rotation, 0.1f);
 
 
     }
@@ -107,7 +107,7 @@ public class CamToRocket : MonoBehaviour
 
     private float posXSet()
     {
-        return Mathf.Lerp(transform.position.x, camRef.x, 0.25f);
+        return Mathf.Lerp(transform.position.x, camRef.x, 0.20f);
     }
     private float posYSet()
     {
@@ -116,7 +116,7 @@ public class CamToRocket : MonoBehaviour
 
     private float posZSet()
     {
-        return Mathf.Lerp(transform.position.z, camRef.z, 0.45f);
+        return Mathf.Lerp(transform.position.z, camRef.z, 0.15f);
     }
 
 

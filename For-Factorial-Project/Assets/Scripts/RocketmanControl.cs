@@ -10,7 +10,9 @@ public class RocketmanControl : MonoBehaviour
     [SerializeField]
     private MotionRocket hareket2;
 
-    private string touchName;
+    private string touchName,touchName2;
+
+    private string[] touchNames = new string[2];
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,60 @@ public class RocketmanControl : MonoBehaviour
     private void FixedUpdate()
     {
 
-        touchNameUpdate();
+        Main();
 
-        Invoke(touchName, 0.0f);
+    }
+    
+    private void Main()
+    {
+        touchNamesUpdate();
+
+        touchsPlay();
+
 
 
     }
+    
+    private void touchNamesUpdate()
+    {
+        touchNameUpdate();
 
+        touchName2Update();
+
+
+
+    }
+    
+    private void touchNameUpdate()
+    {
+        touchNames[0] = controller.transform.GetChild(0).gameObject.name;
+
+    }
+    private void touchName2Update()
+    {
+        if (controller.transform.GetChild(1).gameObject.activeInHierarchy)
+        {
+            touchNames[1] = controller.transform.GetChild(1).gameObject.name;
+        }
+        else
+        {
+            touchNames[1] = null;
+        }
+
+    }
+
+    private void touchsPlay()
+    {
+        foreach(string touchName in touchNames)
+        { 
+            if(touchName!=null)
+            { 
+            Invoke(touchName, 0.0f);
+            }
+        }
+
+    }
+    
     public float get_xDiff()
     {
         return controller.GetComponent<Controller>().get_xdiff();
@@ -59,11 +108,6 @@ public class RocketmanControl : MonoBehaviour
         hareket2.NoMoving();
     }
 
-    private void touchNameUpdate()
-    {
-        touchName = controller.transform.GetChild(0).gameObject.name;
-
-
-    }
+   
 
 }

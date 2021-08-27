@@ -15,6 +15,10 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private Jump jump;
 
+    [SerializeField]
+    private GameObject RocketmanController;
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -121,6 +125,8 @@ public class Controller : MonoBehaviour
 
         }
 
+      
+
         
     }
 
@@ -135,14 +141,25 @@ public class Controller : MonoBehaviour
             SlideRightActive();
 
         }
+
         else if (isNoMoveX())
         {
-            
+
+            if (!RocketmanController.activeInHierarchy)
+            { touchesReset(finger.position[0]); }
+
+
+
         }
+
         else
         {
             SlideLeftActive();
         }
+
+
+       
+       
 
     }
 

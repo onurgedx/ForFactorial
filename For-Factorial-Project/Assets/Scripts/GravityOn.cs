@@ -24,6 +24,12 @@ public class GravityOn : MonoBehaviour
 
     List<IEnumerator> ienu = new List<IEnumerator>();
 
+
+
+    public RestartSmoothly ReSmoothly;
+    public GameObject RocketmanController;
+  
+
     private void FixedUpdate()
     {
 
@@ -89,6 +95,16 @@ public class GravityOn : MonoBehaviour
 
     }
 
+    public void disableAll()
+    { RocketmanController.SetActive(false);
+        go.enabled = false;
+
+        RightLeftOffline();
+
+        fallGlider.enabled = false;
+        fall.enabled = false;
+       
+    }
 
     
 
@@ -151,15 +167,24 @@ public class GravityOn : MonoBehaviour
     }
 
 
+    private void SmoothlyRestart()
+    {
+
+        disableAll();
+        ReSmoothly.enabled = true;
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         
 
-        if (collision.gameObject.tag == "plane")
+        if (collision.gameObject.tag == "plane" ||  ReSmoothly.enabled)
         {
-            
 
-            
+            SmoothlyRestart();
+
+
         }
         else { 
         
@@ -185,11 +210,17 @@ public class GravityOn : MonoBehaviour
                 MoreUp();
                 MoreUp();
                     
-              
+            }
+
+        }
+
+        else if(collision.gameObject.tag == "FinishCube")
+            {
+                SmoothlyRestart();
+
             }
 
 
-        }
             AddAndBlow(collision.gameObject);
 
             go.StartCoroutine("PropelInstant");//hiz veriyor 

@@ -82,9 +82,19 @@ public class SoundController : MonoBehaviour
     {
         return !AudioSourceStick.isPlaying;
     }
+
+    private void StickEnterExitTimeSet(double enter=0.4d,double exit=0.6d)
+    {
+        AudioSourceStick.SetScheduledStartTime(enter*AudioSourceStick.clip.length);
+        AudioSourceStick.SetScheduledEndTime(exit* AudioSourceStick.clip.length);
+
+    }
     private void CreakStickPlay()
     {
+       
+
         AudioSourceStick.Play();
+      
     }
     private void RefreshRecordStickTime()
     {

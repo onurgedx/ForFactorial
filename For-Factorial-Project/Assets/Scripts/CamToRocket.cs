@@ -12,11 +12,17 @@ public class CamToRocket : MonoBehaviour
     private Vector3 camRefBeginLocal;
     private Vector3 camRef;
 
+    private Vector3 Pos0;
+    private Quaternion Rot0;
+
+    private float departure =1f;
+
     // Start is called before the first frame update
     private void Start()
     {
         CamRefBeginCatch();
 
+        RecordPosRot0();
 
     }
 
@@ -34,7 +40,11 @@ public class CamToRocket : MonoBehaviour
     
     }
 
-
+    private void RecordPosRot0()
+    {
+        Pos0 = transform.position;
+        Rot0 = transform.rotation;
+    }
 
     private void CamRefBeginCatch()
     {
@@ -94,29 +104,63 @@ public class CamToRocket : MonoBehaviour
 
     }
 
-    
+    private void camRefDetermine()
+    {
 
+        
+
+
+     if (rocket.transform.parent == null)
+        {
+
+
+        }
+        else if (rocket.transform.parent != null)
+        {
+            rocketman.transform.position = Pos0;
+            rocketman.transform.rotation = Rot0;
+            departureDecrease();
+
+
+        }
+
+
+        camRef = rocketman.transform.position;
+
+       
+       
+
+
+
+    }
 
 
     private void setPos()
     {
-        camRef = rocketman.transform.position;
+       camRefDetermine();
         transform.position = new Vector3(posXSet(), posYSet(), posZSet());
 
     }
 
+
+    private void departureDecrease()
+    {
+        departure = rocket.GetComponent<RestartSmoothly>().time2h;
+    }
+
+
     private float posXSet()
     {
-        return Mathf.Lerp(transform.position.x, camRef.x, 0.20f);
+        return Mathf.Lerp(transform.position.x, camRef.x, 0.20f*departure);
     }
     private float posYSet()
     {
-        return Mathf.Lerp(transform.position.y, camRef.y, 0.18f);
+        return Mathf.Lerp(transform.position.y, camRef.y, 0.18f * departure);
     }
 
     private float posZSet()
     {
-        return Mathf.Lerp(transform.position.z, camRef.z, 0.15f);
+        return Mathf.Lerp(transform.position.z, camRef.z, 0.15f * departure);
     }
 
 

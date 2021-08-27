@@ -17,7 +17,7 @@ public class Motion : MonoBehaviour
 
     private float get_xDiff()
     {
-        return sControl.get_xDiff();
+        return  sControl.get_xDiff();
     }
 
     public void SlideRight()
